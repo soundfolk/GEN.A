@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="new.css">
+
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 id="result">Result</h1>
+
+    <div class="container">
+        <div class="Totals">
+            <div class="inner">
+                <b> <span id="text">Your Score : </span></b>
+                <span id="marks"></span>
+            </div>
+        </div>
+        <div class="Totals">
+            <div class="inner">
+                <b> <span id="text1">Total Marks : </span></b>
+                <span id="total"></span>
+            </div>
+        </div>
+        <div class="Totals">
+            <div class="inner">
+                <b><span id="text2">
+                        Your Total :
+                    </span></b>
+                <br>
+                <br>
+                <span id="per"></span>
+            </div>
+        </div>
+    </div>
+    <div class="pinks">
+        <div class="Totals" id="length">
+            <span id="rem">
+                Better
+            </span>
+        </div>
+    </div>
+    <div class="button">
+        <div class="Totals">
+            <button type="button" id="reset">Retest</button>
+        </div>
+    </div>
+
+
+</body>
+<script>
+    let scores = document.getElementById("marks")
+    let feed = document.getElementById("rem")
+    let percent = document.getElementById("per")
+    let Total = document.getElementById("total")
+    let buts = document.getElementById("reset")
+    const retrievedObject = JSON.parse(localStorage.getItem('marks'));
+    scores.innerHTML = retrievedObject.score
+    Total.innerHTML = retrievedObject.Total
+    let results = (retrievedObject.score / retrievedObject.Total) * 100
+    percent.innerHTML = `${results.toFixed(2)} %`
+    if (results > 80 && Total > 10) {
+        feed.innerHTML = "Remarks : Nice work"
+    }
+    else if (results == 100 && retrievedObject.Total > 10) {
+        feed.innerHTML = "Amazing work"
+    }
+    else if (results < 80 && retrievedObject.Total > 10) {
+        feed.innerHTML = "Remarks : Can do better"
+    }
+    else if (retrievedObject.Total <= 10) {
+        feed.innerHTML = "Remarks : Solve atleast 10"
+    }
+    else {
+        feed.innerHTML = "Remarks : Solve "
+    }
+    buts.addEventListener("click", function () {
+        window.location.href = "quiz.html"
+    })
+</script>
+
+</html>
