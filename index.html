@@ -18,7 +18,7 @@
 </head>
 
 <body>
-    <div class="container">
+        <div class="container">
         <div class="head">
             <span id="text">
                 <u> A site for your test practice
@@ -67,12 +67,18 @@
             </span>
         </div>
     </div>
-    <div class="button"> <button type="button" id="button">Try it</button>
+    <div class="button"> <button type="button" class="same" id="Sets">Sets</button>
+    </div>
+    <div class="button"> <button type="button" class="same" id="PnC">Permutations and combinations</button>
     </div>
 </body>
 <script>
-    let buttons = document.getElementById("button")
+    let buttons = document.getElementById("Sets")
     buttons.addEventListener("click", function () {
+        window.location.href = "Sets.html"
+    })
+    let button = document.getElementById("PnC")
+    button.addEventListener("click", function () {
         window.location.href = "quiz.html"
     })
 </script>
